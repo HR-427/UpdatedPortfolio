@@ -1,0 +1,264 @@
+body {
+  font-family: 'Segoe UI';
+  text-align: center;
+  background-color: rgb(212, 204, 233);
+  background-size: cover;
+}
+
+#board {
+  width: 540px;
+  height: 680px;
+
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  background: url("./soil.png");
+  background-size: cover;
+  border: 3px solid white;
+  border-radius: 25px;
+}
+
+#board div {
+  /* board = 540 x 540, divide into 3x3 tiles --> 180 x 180 per div */
+  width: 180px; 
+  height: 180px;
+  background-image: url("./pipe.png");
+  background-size: cover;
+}
+
+#board div img {
+  /* all img tags inside tiles */
+  width: 100px;
+  height: 100px;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
+/*particle stuff*/
+.particle-container {
+  position: fixed; /* Ensure it stays fixed on the screen */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height of the viewport */
+  pointer-events: none; /* Allow interaction with other elements */
+  overflow: hidden; /* Prevent particles from overflowing */
+  z-index: -1; /* Ensure it appears above other elements */
+}
+
+
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgb(255, 255, 255);
+  border-radius: 30%;
+  animation: floatUp 20s linear infinite;
+  opacity: 0.5; 
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+/*end of particle stuff*/
+
+/*hamburger menu stuff*/
+
+ul{
+  font-family: 'Segoe UI'; 
+  line-height: 2.5em; 
+  font-size: 30px;
+}
+
+li::marker
+{
+  color: rgb(212, 204, 233);
+}
+
+a
+{
+color: white;
+}
+
+a:visited
+{
+color: white;
+}
+
+a:hover
+{
+color: #a6b3f6;
+}
+
+
+.off-screen-menu {
+  background-color:  rgb(34, 37, 49);
+  background-image: linear-gradient(to bottom right, rgb(34, 37, 49), rgb(97, 99, 106));
+  height: 100vh;
+  width: 100%;
+  max-width: 450px;
+  position: fixed;
+  top: 0;
+  right: -450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  transition: .3s ease;
+}
+.off-screen-menu.active {
+  right: 0;
+}
+
+
+nav {
+  padding: 1rem;
+  display: flex;
+}
+
+
+.ham-menu {
+  height: 50px;
+  width: 40px;
+  margin-left: auto;
+  position: relative;
+}
+
+.ham-menu span {
+  height: 5px;
+  width: 100%;
+  background-color: #373737; 
+  border-radius: 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: .3s ease;
+}
+.ham-menu span:nth-child(1) {
+  top: 25%;
+}
+.ham-menu span:nth-child(3) {
+  top: 75%;
+}
+.ham-menu.active span {
+  background-color: white;
+}
+.ham-menu.active span:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.ham-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.ham-menu.active span:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.content-wrapper {
+  position: relative;
+  width: 100%; 
+  transition: width 0.3s ease;
+}
+
+.content-wrapper.active {
+  transform: translateX(-150px); 
+}
+
+#content {
+  width: 100%;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+#menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+}
+
+/*end of menu stuff*/
+
+.footerStyle
+{
+  background-image: linear-gradient(to bottom right, rgb(34, 37, 49), rgb(97, 99, 106));
+  color: white; 
+  font-family: 'Segoe UI';
+  text-align: center; 
+  padding: 30px; 
+  margin-top: 70px; 
+}
+
+
+.h1
+{
+  font-family: 'Segoe UI';
+}
+
+.h2
+{
+  font-family: 'Segoe UI';
+}
+
+.imageRow
+{
+  display: flex; 
+  justify-content: center; 
+}
+
+#start-overlay {
+  position: absolute;
+  width: 540px; /* Full width of the game area */
+  height: 676px; /* Full height of the game area */
+  background-color: rgba(0, 0, 0, 0.5); /* Translucent black background */
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically */
+  z-index: 10; /* Ensure it appears above other elements */
+  transform: translateX(432px) translateY(82px);
+  border: 3px solid white;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+}
+
+#start-overlay.shifted {
+  transform: translateX(282px) translateY(23px); /* Adjust for menu width */
+}
+
+#start-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white; /* Solid white button */
+  color: black; /* Text color */
+  border: 2px solid black; /* Optional styling */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+#start-overlay.hidden {
+  display: none; /* Hide the overlay when the game starts */
+}

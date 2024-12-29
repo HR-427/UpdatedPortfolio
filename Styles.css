@@ -1,0 +1,340 @@
+/*basic structure stuff*/
+.title
+{
+    font-size: 100px; 
+    padding: 0; 
+    text-align: center; 
+    font-family: 'Segoe UI'; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(-50%);
+    margin-top: 350px;  
+    color: rgb(55, 55, 55); 
+}
+
+.imageRow
+{
+    display: flex; 
+    justify-content: center; 
+}
+
+.paragraphTitle
+{
+    font-size: 40px; 
+    font-family: 'Segoe UI'; 
+    color: rgb(55, 55, 55); 
+    margin-left: 50px; 
+    background-image: linear-gradient(to bottom right, rgb(34, 37, 49), rgb(97, 99, 106));
+    position: absolute; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-top: 10px;
+    padding-bottom: 10px; 
+    color: white; 
+}
+
+
+p
+{
+    font-size: 20px; 
+    font-family: 'Segoe UI'; 
+    color: rgb(55, 55, 55); 
+    padding-left: 90px; 
+    padding-right: 90px; 
+}
+
+
+body
+{
+    background-color: rgb(212, 204, 233);
+}
+
+ul
+{
+    font-family: 'Segoe UI'; 
+    line-height: 2.5em; 
+    font-size: 30px;
+}
+
+li::marker
+{
+    color: rgb(212, 204, 233);
+}
+/*end of basic structure stuff*/
+
+
+/*hamburger menu stuff*/
+
+a {
+  color: white;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color: #a6b3f6;
+}
+
+
+.off-screen-menu {
+  background-color:  rgb(34, 37, 49);
+  background-image: linear-gradient(to bottom right, rgb(34, 37, 49), rgb(97, 99, 106));
+  height: 100vh;
+  width: 100%;
+  max-width: 450px;
+  position: fixed;
+  top: 0;
+  right: -450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  transition: .3s ease;
+}
+.off-screen-menu.active {
+  right: 0;
+}
+
+
+nav {
+  padding: 1rem;
+  display: flex;
+}
+
+
+.ham-menu {
+  height: 50px;
+  width: 40px;
+  margin-left: auto;
+  position: relative;
+}
+
+.ham-menu span {
+  height: 5px;
+  width: 100%;
+  background-color: #373737; 
+  border-radius: 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: .3s ease;
+}
+.ham-menu span:nth-child(1) {
+  top: 25%;
+}
+.ham-menu span:nth-child(3) {
+  top: 75%;
+}
+.ham-menu.active span {
+  background-color: white;
+}
+.ham-menu.active span:nth-child(1) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.ham-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.ham-menu.active span:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.content-wrapper {
+  position: relative;
+  width: 100%; 
+  transition: width 0.3s ease;
+}
+
+.content-wrapper.active {
+  transform: translateX(-150px); 
+}
+
+#content {
+  width: 100%;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+#menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+}
+
+/*end of menu stuff*/
+
+
+
+/*particle stuff*/
+.particle-container {
+  position: fixed; /* Ensure it stays fixed on the screen */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height of the viewport */
+  pointer-events: none; /* Allow interaction with other elements */
+  overflow: hidden; /* Prevent particles from overflowing */
+  z-index: -1; /* Ensure it appears above other elements */
+}
+
+
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgb(255, 255, 255);
+  border-radius: 30%;
+  animation: floatUp 20s linear infinite;
+  opacity: 0.5; 
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+/*end of particle stuff*/
+
+
+/*image reveal*/
+
+@keyframes shake {
+  0%, 100% {
+    transform: scale(0.8) translateX(0);
+  }
+  20% {
+    transform: scale(0.8) translateX(-10px);
+  }
+  40% {
+    transform: scale(0.8) translateX(10px);
+  }
+  60% {
+    transform: scale(0.8) translateX(-10px);
+  }
+  80% {
+    transform: scale(0.8) translateX(10px);
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 240px; /* Adjust to your image's dimensions */
+  height: 240px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgb(77, 80, 92);
+  margin: 30px; 
+  display: inline-block;
+}
+
+.container-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping if there are too many elements for one row */
+  justify-content: center; /* Aligns items horizontally in the center */
+  gap: 10px; /* Adds spacing between items */
+}
+
+.hidden-image {
+
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hidden-image.revealed {
+  opacity: 1;
+  transform: scale(1);
+  float: center; 
+  animation: shake 0.5s ease; /* Trigger shake animation */
+  padding: 20px;   
+}
+
+/*end of image reveal*/
+
+/*make slowly appear when scrolling*/
+.hidden {
+  opacity: 0;
+  transform: translateY(50px); /* Move elements down slightly */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth appearance */
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0); /* Move elements back to their original position */
+}
+
+/*end of fade transition*/ 
+
+
+/*carousel stuff*/ 
+.carousel {
+  width: 80%;
+  max-width: 200px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+/*end of carousel stuff*/ 
+
+/*back to top button code*/
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none; 
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font: 'Segoe UI';
+}
+
+#backToTop:hover {
+  background-color: #000000;
+  color: white; 
+}
+/*end of back to top button code*/
+
+.footerStyle
+{
+  background-image: linear-gradient(to bottom right, rgb(34, 37, 49), rgb(97, 99, 106));
+  color: white; 
+  font-family: 'Segoe UI';
+  text-align: center; 
+  padding: 30px; 
+  margin-top: 70px; 
+}
+
